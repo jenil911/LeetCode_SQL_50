@@ -1,9 +1,11 @@
-# Write your MySQL query statement below
-SELECT employee_id, department_id
-FROM Employee
-WHERE primary_flag = 'Y'
-UNION
-SELECT employee_id, department_id
-FROM Employee
-GROUP BY employee_id
-HAVING COUNT(*) = 1;
+/* Write your T-SQL query statement below */
+select employee_id, department_id 
+from Employee
+where primary_flag = 'Y'
+
+union
+
+select employee_id, max(department_id)
+from Employee 
+group by employee_id 
+having count(employee_id) = 1;
